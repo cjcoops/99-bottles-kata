@@ -9,7 +9,11 @@ class Song
   end
 
   def verses(initial_bottles, final_bottles)
-    verse(initial_bottles) + "\n" + verse(final_bottles)
+    output = ""
+    for number_of_bottles in (initial_bottles).downto(final_bottles)
+      output += verse(number_of_bottles) + "\n"
+    end
+    output.chomp
   end
 
 end
