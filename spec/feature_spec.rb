@@ -5,7 +5,7 @@ describe "Feature tests" do
 
   subject(:song) { Song.new(verse_klass: Verse) }
 
-  it "returns the verse for 98 bottles" do
+  it "returns the words for a single verse" do
     expected = <<-VERSE
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
