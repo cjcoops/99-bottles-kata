@@ -37,4 +37,5 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
     verse = Verse.new(0)
     expect(verse.lines).to eq(expected)
   end
+  
 end

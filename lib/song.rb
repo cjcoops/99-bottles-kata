@@ -1,11 +1,14 @@
+#responsible for putting together verses of the song
+
 require_relative './verse'
 
 class Song
+
   attr_reader :verse_klass
+
   def initialize(verse_klass: Verse)
     @verse_klass = verse_klass
   end
-
 
   def verses(initial_bottles, final_bottles = initial_bottles)
     output = ""

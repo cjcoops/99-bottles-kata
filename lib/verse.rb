@@ -1,3 +1,5 @@
+#responsible for knowing the words to a verse
+
 class Verse
 
   attr_reader :initial_bottles
