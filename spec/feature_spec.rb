@@ -38,5 +38,19 @@ Take one down and pass it around, 96 bottles of beer on the wall.
     expect(song.verses(99,97)).to eq(expected)
   end
 
+  it "sings multiple verses 3 to 1" do
+    expected = <<-VERSE
+3 bottles of beer on the wall, 3 bottles of beer.
+Take one down and pass it around, 2 bottles of beer on the wall.
+
+2 bottles of beer on the wall, 2 bottles of beer.
+Take one down and pass it around, 1 bottle of beer on the wall.
+
+1 bottle of beer on the wall, 1 bottle of beer.
+Take one down and pass it around, no more bottles of beer on the wall.
+    VERSE
+    expect(song.verses(3,1)).to eq(expected)
+  end
+
 
 end

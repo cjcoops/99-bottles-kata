@@ -28,4 +28,13 @@ Take one down and pass it around, no more bottles of beer on the wall.
     verse = Verse.new(1)
     expect(verse.lines).to eq(expected)
   end
+
+  it "returns the words for a single verse with no bottles" do
+    expected = <<-VERSE
+No more bottles of beer on the wall, no more bottles of beer.
+Go to the store and buy some more, 99 bottles of beer on the wall.
+    VERSE
+    verse = Verse.new(0)
+    expect(verse.lines).to eq(expected)
+  end
 end
