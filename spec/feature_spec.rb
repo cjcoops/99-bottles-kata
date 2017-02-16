@@ -39,6 +39,4 @@ Take one down and pass it around, 96 bottles of beer on the wall.
   end
 
 
-
-
 end

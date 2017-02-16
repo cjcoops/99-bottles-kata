@@ -7,7 +7,14 @@ class Verse
   end
 
   def lines
-      "#{initial_bottles} bottles of beer on the wall, #{initial_bottles} bottles of beer.\nTake one down and pass it around, #{initial_bottles-1} bottles of beer on the wall.\n"
+      "#{initial_bottles} #{bottles(initial_bottles)} of beer on the wall,"\
+      " #{initial_bottles} #{bottles(initial_bottles)} of beer.\n"\
+      "Take one down and pass it around,"\
+      " #{initial_bottles-1} #{bottles(initial_bottles-1)} of beer on the wall.\n"
+  end
+
+  def bottles(number_of_bottles)
+    number_of_bottles == 1 ? "bottle" : "bottles"
   end
 
 end

@@ -6,9 +6,6 @@ class Song
     @verse_klass = verse_klass
   end
 
-  def verse(number_of_bottles)
-    verse_klass.new(number_of_bottles).lines
-  end
 
   def verses(initial_bottles, final_bottles = initial_bottles)
     output = ""
@@ -16,6 +13,12 @@ class Song
       output += verse(number_of_bottles) + "\n"
     end
     output.chomp
+  end
+
+  private
+
+  def verse(number_of_bottles)
+    verse_klass.new(number_of_bottles).lines
   end
 
 end
