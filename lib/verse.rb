@@ -7,14 +7,18 @@ class Verse
   end
 
   def lines
-      "#{initial_bottles} #{bottles(initial_bottles)} of beer on the wall,"\
-      " #{initial_bottles} #{bottles(initial_bottles)} of beer.\n"\
+      "#{bottle_count(initial_bottles)} #{bottle_pluarlizer(initial_bottles)} of beer on the wall,"\
+      " #{bottle_count(initial_bottles)} #{bottle_pluarlizer(initial_bottles)} of beer.\n"\
       "Take one down and pass it around,"\
-      " #{initial_bottles-1} #{bottles(initial_bottles-1)} of beer on the wall.\n"
+      " #{bottle_count(initial_bottles-1)} #{bottle_pluarlizer(initial_bottles-1)} of beer on the wall.\n"
   end
 
-  def bottles(number_of_bottles)
+  def bottle_pluarlizer(number_of_bottles)
     number_of_bottles == 1 ? "bottle" : "bottles"
+  end
+
+  def bottle_count(number_of_bottles)
+    number_of_bottles == 0 ? "no more" : number_of_bottles
   end
 
 end

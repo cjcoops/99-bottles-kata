@@ -19,4 +19,13 @@ Take one down and pass it around, 1 bottle of beer on the wall.
     verse = Verse.new(2)
     expect(verse.lines).to eq(expected)
   end
+
+  it "returns the words for a single verse with 1 bottle" do
+    expected = <<-VERSE
+1 bottle of beer on the wall, 1 bottle of beer.
+Take one down and pass it around, no more bottles of beer on the wall.
+    VERSE
+    verse = Verse.new(1)
+    expect(verse.lines).to eq(expected)
+  end
 end
