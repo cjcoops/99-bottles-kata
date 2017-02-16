@@ -2,7 +2,9 @@ require 'song'
 
 describe Song do
 
-  subject(:song) { described_class.new }
+  let(:verse) { double :verse, lines: nil }
+  let(:verse_klass) { double :verse_klass, new: verse }
+  subject(:song) { described_class.new(verse_klass: verse_klass) }
 
   xit "returns the final verse when there are no bottles left" do
     expected = <<-VERSE
@@ -12,23 +14,31 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
     expect(song.verses(0)).to eq(expected)
   end
 
+  it "calls lines on a new instance of verse" do
+    expect(verse).to receive(:lines)
+    song.verse(99)
+  end
+
   it "returns the verse for 99 bottles" do
     expected = <<-VERSE
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
     VERSE
+    allow(verse).to receive(:lines).and_return(expected)
     expect(song.verses(99)).to eq(expected)
   end
 
-  it "returns the verse for 98 bottles" do
-    expected = <<-VERSE
+  it "sings 2 consecutive verses" do
+    ninetyninelines = <<-VERSE
+99 bottles of beer on the wall, 99 bottles of beer.
+Take one down and pass it around, 98 bottles of beer on the wall.
+    VERSE
+
+    ninentyeightlines = <<-VERSE
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
     VERSE
-    expect(song.verses(98)).to eq(expected)
-  end
 
-  it "sings 2 consecutive verses" do
     expected = <<-VERSE
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
@@ -36,22 +46,10 @@ Take one down and pass it around, 98 bottles of beer on the wall.
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
     VERSE
+    allow(verse).to receive(:lines).and_return(ninetyninelines, ninentyeightlines)
     expect(song.verses(99,98)).to eq(expected)
   end
 
-  it "sings multiple verses" do
-    expected = <<-VERSE
-99 bottles of beer on the wall, 99 bottles of beer.
-Take one down and pass it around, 98 bottles of beer on the wall.
-
-98 bottles of beer on the wall, 98 bottles of beer.
-Take one down and pass it around, 97 bottles of beer on the wall.
-
-97 bottles of beer on the wall, 97 bottles of beer.
-Take one down and pass it around, 96 bottles of beer on the wall.
-    VERSE
-    expect(song.verses(99,97)).to eq(expected)
-  end
 
 
 

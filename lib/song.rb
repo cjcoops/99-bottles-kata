@@ -1,13 +1,13 @@
-
+require_relative './verse'
 
 class Song
-
-  def initialize
-
+  attr_reader :verse_klass
+  def initialize(verse_klass: Verse)
+    @verse_klass = verse_klass
   end
 
   def verse(number_of_bottles)
-    "#{number_of_bottles} bottles of beer on the wall, #{number_of_bottles} bottles of beer.\nTake one down and pass it around, #{number_of_bottles-1} bottles of beer on the wall.\n"
+    verse_klass.new(number_of_bottles).lines
   end
 
   def verses(initial_bottles, final_bottles = initial_bottles)
